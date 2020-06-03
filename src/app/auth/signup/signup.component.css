@@ -1,0 +1,7 @@
+.form-group.error input {
+  border: 1px solid red
+}
+
+.form-group.error .invalid-feedback {
+  color: red
+}

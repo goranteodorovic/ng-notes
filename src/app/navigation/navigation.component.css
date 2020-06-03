@@ -1,0 +1,15 @@
+.navbar {
+  margin-bottom: unset;
+  border: unset;
+}
+
+@media (min-width: 768px) {
+
+  .container-fluid>.navbar-collapse,
+  .container-fluid>.navbar-header,
+  .container>.navbar-collapse,
+  .container>.navbar-header {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+}

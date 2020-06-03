@@ -1,0 +1,27 @@
+<form action="" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{ isEdit ? "Edit Note" : "Add new Note" }}</h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="noteTitle">Title</label>
+          <input type="text" id="titleInput" name="title" placeholder="Enter title..." class="form-control"
+            [(ngModel)]="title" required />
+        </div>
+        <div class="form-group">
+          <label for="noteContent">Content</label>
+          <textarea id="contentInput" name="content" cols="30" rows="10" placeholder="Enter content..." required
+            class="form-control" [(ngModel)]="content"></textarea>
+        </div>
+        <div style="text-align: right">
+          <button *ngIf="isEdit || f.touched" class="btn btn-danger" type="button" (click)="onClear(f)">Clear</button>
+          <button [disabled]="!f.valid" class="btn btn-success" type="submit">{{ isEdit ? "Save" : "Add" }}</button>
+        </div>
+      </div>
+      <!-- <div class="panel-footer"></div> -->
+    </div>
+  </div>
+</form>

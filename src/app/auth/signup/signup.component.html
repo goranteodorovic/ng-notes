@@ -1,0 +1,35 @@
+<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+  <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign up</h1>
+  <br />
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="form-signup">
+    <div class="form-group">
+      <input [(ngModel)]="email" type="email" name="email" #emailInput="ngModel" class="form-control"
+        placeholder="Email address" required autofocus="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+    </div>
+
+    <div class="form-group">
+      <input [(ngModel)]="password" type="password" name="password" #passwordInput="ngModel" class="form-control"
+        placeholder="Password" required minlength="8">
+    </div>
+
+    <div class="form-group" [ngClass]="{
+        error: f.valid && passwordConfirmationInput.value != passwordInput.value
+    }">
+      <input [(ngModel)]="passwordConfirmation" type="password" name="passwordConfirmation"
+        #passwordConfirmationInput="ngModel" class="form-control" placeholder="Repeat Password" required minlength="8">
+      <div *ngIf="f.valid && passwordConfirmationInput.value != passwordInput.value" class="invalid-feedback">
+        <div>Passwords do not match!</div>
+      </div>
+    </div>
+    <!--f.submitted-->
+    <button [disabled]="!f.valid || passwordConfirmationInput.value != passwordInput.value"
+      class="btn btn-primary btn-block" type="submit">
+      <i class="fas fa-user-plus"></i> Sign Up
+    </button>
+  </form>
+  <hr />
+  <div>
+    <p>Already have an account? <span class="btn btn-primary btn-block" routerLink="/signin">Sign In</span>
+    </p>
+  </div>
+</div>

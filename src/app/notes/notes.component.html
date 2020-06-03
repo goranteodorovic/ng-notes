@@ -1,0 +1,18 @@
+<div class="container">
+  <h3>Notes area</h3>
+  <p>Here you can see and manage only the notes you've created.</p>
+  <hr />
+  <div class="row">
+    <div class="col-lg-7 col-md-6 col-sm-6">
+      <app-note *ngFor="let note of notes" [note]="note"></app-note>
+
+      <!-- <ng-container *ngFor="let note of notesObservable | async">
+        <app-note *ngIf="note.uid == uid" [note]="note"></app-note>
+      </ng-container> -->
+    </div>
+
+    <div class="col-lg-5 col-md-6 col-sm-6">
+      <app-note-edit></app-note-edit>
+    </div>
+  </div>
+</div>
