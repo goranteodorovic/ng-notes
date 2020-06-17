@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Note } from "../note.model";
 import { NotesService } from "src/app/services/notes.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-note",
@@ -10,20 +11,10 @@ import { NotesService } from "src/app/services/notes.service";
 export class NoteComponent implements OnInit {
   @Input() note: Note;
 
-  constructor(private notesService: NotesService) {}
+  constructor(private notesService: NotesService, private router: Router) {}
 
-  onEdit() {
-    this.notesService.editStarted.emit(this.note);
-  }
-
-  onRemove(note: Note) {
-    if (confirm("Are you sure?")) {
-      this.notesService
-        .delete(note)
-        .toPromise()
-        .then(() => this.notesService.listChanged.emit(true))
-        .catch((err) => alert("An error occured: " + err.message));
-    }
+  onDetail(note: Note) {
+    this.router.navigate(["/notes", this.note.id]);
   }
 
   ngOnInit() {}

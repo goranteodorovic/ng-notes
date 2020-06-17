@@ -1,14 +1,10 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">{{ note.title }}</h3>
+    <a (click)="onDetail(note)">
+      <h3 class="panel-title">{{ note.title }}</h3>
+    </a>
   </div>
   <div class="panel-body">
     {{ note.content }}
-    <hr>
-    by: <span>{{ note.uid }}</span>
-    <br>
-    id: <span>{{ note.id }}</span>
-    <p><button class="btn btn-default" (click)="onEdit(note)">Edit</button>
-      <button class="btn btn-danger" (click)="onRemove(note)">Remove</button></p>
   </div>
 </div>

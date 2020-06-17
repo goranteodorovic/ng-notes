@@ -24,6 +24,7 @@ import { NotesService } from "./services/notes.service";
 import { NoteEditComponent } from "./notes/note-edit/note-edit.component";
 import { AuthGuard } from "./services/auth-guard.service";
 import { AboutComponent } from "./about/about.component";
+import { NoteDetailComponent } from './notes/note-detail/note-detail.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AboutComponent } from "./about/about.component";
     NoteComponent,
     NoteEditComponent,
     AboutComponent,
+    NoteDetailComponent,
   ],
   imports: [
     BrowserModule,

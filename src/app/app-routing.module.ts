@@ -7,6 +7,8 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { SigninComponent } from "./auth/signin/signin.component";
 import { NotesComponent } from "./notes/notes.component";
 import { AuthGuard } from "./services/auth-guard.service";
+import { NoteEditComponent } from "./notes/note-edit/note-edit.component";
+import { NoteDetailComponent } from "./notes/note-detail/note-detail.component";
 
 const routes: Routes = [
   // { path: "", redirectTo: "login", pathMatch: "full" },
@@ -20,7 +22,16 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
   },
-  { path: "notes", component: NotesComponent, canActivate: [AuthGuard] },
+  {
+    path: "notes",
+    component: NotesComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: "new", component: NoteEditComponent },
+      { path: ":id", component: NoteDetailComponent },
+      { path: ":id/edit", component: NoteEditComponent },
+    ],
+  },
 ];
 
 @NgModule({

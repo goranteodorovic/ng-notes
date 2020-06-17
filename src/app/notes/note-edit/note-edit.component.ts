@@ -3,6 +3,7 @@ import { NgForm } from "@angular/forms";
 import { NotesService } from "src/app/services/notes.service";
 import { Note } from "../note.model";
 import { Subscription } from "rxjs";
+import { Router, ActivatedRoute, Params } from "@angular/router";
 
 @Component({
   selector: "app-note-edit",
@@ -10,48 +11,75 @@ import { Subscription } from "rxjs";
   styleUrls: ["./note-edit.component.css"],
 })
 export class NoteEditComponent implements OnInit, OnDestroy {
-  note: Note = new Note("", "", "", "");
+  note: Note;
   isEdit: boolean = false;
   subscription: Subscription;
-  title: string;
-  content: string;
+  title: string = "";
+  content: string = "";
 
-  constructor(private notesService: NotesService) {}
+  constructor(
+    private notesService: NotesService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.note = new Note("", "", "", "");
+  }
+
+  ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      let id = params["id"];
+      this.notesService.getNoteById(id).subscribe((note: Note) => {
+        if (note) {
+          this.isEdit = true;
+          this.setNoteDataForEdit(note);
+        } else {
+          if (this.router.url != "/notes/new") {
+            this.router.navigate(["/notes"]);
+          }
+        }
+      });
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
+  onSubmit(form: NgForm) {
+    if (this.isEdit) {
+      this.note.title = form.value.title;
+      this.note.content = form.value.content;
+
+      this.notesService.update(this.note).subscribe(
+        (note) => {
+          this.onClear(form);
+        },
+        (err) => window.alert
+      );
+    } else {
+      this.notesService.create(this.title, this.content).subscribe(
+        (note) => {
+          this.notesService.noteAdded.emit(note);
+          this.onClear(form);
+        },
+        (err) => window.alert
+      );
+    }
+  }
 
   onClear(form: NgForm) {
     form.reset();
     this.isEdit = false;
     this.note = new Note("", "", "", "");
+    this.router.navigate(["/notes"]);
   }
 
-  onSubmit(form: NgForm) {
-    this.note.title = form.value.title;
-    this.note.content = form.value.content;
-    let query: Promise<any>;
-
-    if (this.isEdit) {
-      query = this.notesService.update(this.note).toPromise();
-    } else {
-      query = this.notesService.create(this.note).toPromise();
-    }
-
-    query
-      .then(() => this.notesService.listChanged.emit(true))
-      .then(() => this.onClear(form))
-      .catch((err) => window.alert("An error occured: " + err.message));
-  }
-
-  ngOnInit() {
-    this.subscription = this.notesService.editStarted.subscribe(
-      (note: Note) => {
-        this.note = note;
-        this.title = note.title;
-        this.content = note.content;
-        this.isEdit = true;
-      }
-    );
-  }
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  setNoteDataForEdit(note: Note) {
+    this.note = note;
+    this.title = note.title;
+    this.content = note.content;
+    this.isEdit = true;
   }
 }

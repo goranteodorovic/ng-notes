@@ -1,18 +1,15 @@
 <div class="container">
   <h3>Notes area</h3>
   <p>Here you can see and manage only the notes you've created.</p>
+  <a class="btn btn-default" routerLink="/notes/new">Add new note</a>
   <hr />
   <div class="row">
     <div class="col-lg-7 col-md-6 col-sm-6">
-      <app-note *ngFor="let note of notes" [note]="note"></app-note>
-
-      <!-- <ng-container *ngFor="let note of notesObservable | async">
-        <app-note *ngIf="note.uid == uid" [note]="note"></app-note>
-      </ng-container> -->
+      <app-note *ngFor="let note of notesService.notes" [note]="note"></app-note>
     </div>
 
     <div class="col-lg-5 col-md-6 col-sm-6">
-      <app-note-edit></app-note-edit>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

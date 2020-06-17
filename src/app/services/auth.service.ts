@@ -9,9 +9,7 @@ import { User } from "../auth/user";
   providedIn: "root",
 })
 export class AuthService {
-  // private user: Observable<firebase.User>
   private userData: User; // used in Dashboard
-  // userStatusChange = new EventEmitter<boolean>();
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {
     // set the user ( private / localStorage )
@@ -20,11 +18,9 @@ export class AuthService {
         this.userData = user;
         // localStorage needed for isLoggedIn
         localStorage.setItem("user", JSON.stringify(user));
-        // this.userStatusChange.emit(true);
       } else {
         this.userData = null;
         localStorage.removeItem("user");
-        // this.userStatusChange.emit(false);
       }
       // token will be used to authenticate http requests
       this.afAuth.idToken.subscribe((token) => {
@@ -82,6 +78,7 @@ export class AuthService {
   updateProfile(user: User) {
     return firebase.auth().currentUser.updateProfile(user);
   }
+
   updatePassword(email: string, password: string, newPassword: string) {
     let user = firebase.auth().currentUser;
     let credentials = firebase.auth.EmailAuthProvider.credential(
@@ -92,6 +89,7 @@ export class AuthService {
       user.updatePassword(newPassword);
     });
   }
+
   deleteAcount() {
     return firebase
       .auth()
