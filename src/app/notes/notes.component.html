@@ -4,11 +4,11 @@
   <a class="btn btn-default" routerLink="/notes/new">Add new note</a>
   <hr />
   <div class="row">
-    <div class="col-lg-7 col-md-6 col-sm-6">
+    <div class="col-lg-6 col-md-6 col-sm-6">
       <app-note *ngFor="let note of notesService.notes" [note]="note"></app-note>
     </div>
 
-    <div class="col-lg-5 col-md-6 col-sm-6">
+    <div class="col-lg-6 col-md-6 col-sm-6">
       <router-outlet></router-outlet>
     </div>
   </div>

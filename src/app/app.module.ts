@@ -13,33 +13,20 @@ import { SignupComponent } from "./auth/signup/signup.component";
 
 import { environment } from "../environments/environment";
 import { NavigationComponent } from "./navigation/navigation.component";
-import { HomeComponent } from "./home/home.component";
 import { VerifyEmailComponent } from "./auth/verify-email/verify-email.component";
-import { DashboardComponent } from "./dashboard/dashboard.component";
 import { AuthService } from "./services/auth.service";
 import { AngularFireAuth } from "@angular/fire/auth";
-import { NotesComponent } from "./notes/notes.component";
-import { NoteComponent } from "./notes/note/note.component";
-import { NotesService } from "./services/notes.service";
-import { NoteEditComponent } from "./notes/note-edit/note-edit.component";
+
 import { AuthGuard } from "./services/auth-guard.service";
-import { AboutComponent } from "./about/about.component";
-import { NoteDetailComponent } from './notes/note-detail/note-detail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     NavigationComponent,
-    HomeComponent,
     VerifyEmailComponent,
-    DashboardComponent,
     SigninComponent,
-    NotesComponent,
-    NoteComponent,
-    NoteEditComponent,
-    AboutComponent,
-    NoteDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,8 +35,9 @@ import { NoteDetailComponent } from './notes/note-detail/note-detail.component';
     AngularFireDatabaseModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
-  providers: [AngularFireAuth, AuthService, NotesService, AuthGuard],
+  providers: [AngularFireAuth, AuthService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -6,3 +6,16 @@
 img {
   max-width: 100%;
 }
+
+input {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.form-group {
+  margin-bottom: 5px;
+}
+
+a.btn:not(:last-child) {
+  margin-right: 5px;
+}

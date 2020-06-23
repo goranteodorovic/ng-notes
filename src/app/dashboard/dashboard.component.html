@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-lg-12">
           <div *ngIf="authService.userData as user">
-            <h1>Hello: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h1>
+            <h1>{{(user.displayName) ? user.displayName : 'User'}}</h1>
             <hr>
             <div class="row">
               <div class="col-lg-8 col-md-7 col-sm-12">
@@ -24,7 +24,7 @@
                 </div>
               </div>
 
-              <div class="col-lg-4 col-md-5 col-sm-12">
+              <div class="col-lg-4 col-md-5 col-sm-6">
                 <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="form-signup" *ngIf="editting">
                   <div class="form-group">
                     <input [(ngModel)]="displayName" type="text" name="displayName" class="form-control"

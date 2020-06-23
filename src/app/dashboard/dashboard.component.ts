@@ -3,7 +3,6 @@ import { AuthService } from "../services/auth.service";
 import * as firebase from "firebase/app";
 import { NgForm } from "@angular/forms";
 import { User } from "../auth/user";
-import { format } from "url";
 
 @Component({
   selector: "app-dashboard",
