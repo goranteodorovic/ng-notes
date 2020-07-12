@@ -33,9 +33,9 @@ export class NoteEditComponent implements OnInit, OnDestroy {
           this.isEdit = true;
           this.setNoteDataForEdit(note);
         } else {
-          if (this.router.url != "/notes/new") {
-            this.router.navigate(["/notes"]);
-          }
+          // if (this.router.url != "/notes/new") {
+          //   this.router.navigate(["/notes"]);
+          // }
         }
       });
     });
@@ -73,7 +73,9 @@ export class NoteEditComponent implements OnInit, OnDestroy {
     form.reset();
     this.isEdit = false;
     this.note = new Note("", "", "", "");
-    this.router.navigate(["/notes"]);
+    this.router.navigate([".."], {
+      relativeTo: this.route,
+    });
   }
 
   setNoteDataForEdit(note: Note) {

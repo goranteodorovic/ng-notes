@@ -1,0 +1,10 @@
+<div *ngIf="message && message.type == 'confirm'">
+  <div id="modal-container">
+    <p>{{message.text}}</p>
+    <p class=btn-container>
+      <button class="btn btn-default" (click)="message.decline()">Perhaps not</button>
+      <button class="btn btn-primary" (click)="message.confirm()">Yes, i do</button>
+    </p>
+  </div>
+  <div id="modal-overlay" (click)="message.decline()"></div>
+</div>

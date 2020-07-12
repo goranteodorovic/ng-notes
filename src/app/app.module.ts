@@ -18,7 +18,8 @@ import { AuthService } from "./services/auth.service";
 import { AngularFireAuth } from "@angular/fire/auth";
 
 import { AuthGuard } from "./services/auth-guard.service";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ConfirmationDialogComponent } from "./confirmation-dialog/confirmation-dialog.component";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavigationComponent,
     VerifyEmailComponent,
     SigninComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,

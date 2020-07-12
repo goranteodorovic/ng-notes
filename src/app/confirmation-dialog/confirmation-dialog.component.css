@@ -1,0 +1,32 @@
+#modal-container {
+  width: auto;
+  position: absolute;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#modal-container .btn-container {
+  text-align: right;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+button:not(:last-child) {
+  margin-right: 5px;
+}
+
+#modal-overlay {
+  position: absolute;
+  width: 100vW;
+  height: 100vH;
+  top: 0;
+  left: 0;
+  opacity: 0.85;
+  background-color: darkgray;
+}

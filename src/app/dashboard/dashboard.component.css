@@ -1,6 +1,41 @@
-.user-info {
-  display: flex;
-  align-items: center;
+@media only screen and (max-width: 767px) {
+  .image-container {
+    max-width: 350px;
+    margin: 0 auto 20px;
+  }
+
+  .info-container {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .form-container {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .user-info {
+    display: flex;
+  }
+
+  .info-container .buttons-container {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+
+
+.info-container .buttons-container {
+  margin-bottom: 0;
+}
+
+.row>div:not(:last-child) {
+  margin-bottom: 20px;
 }
 
 img {
