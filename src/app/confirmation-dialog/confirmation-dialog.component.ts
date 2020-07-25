@@ -18,6 +18,7 @@ export class ConfirmationDialogComponent implements OnInit, OnDestroy {
       .getMessage()
       .subscribe((message) => {
         this.message = message;
+        this.confDiaService.getRenderer().addClass(document.body, "no-scroll");
       });
   }
 

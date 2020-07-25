@@ -8,6 +8,7 @@ import { NotesService } from "../services/notes.service";
   styleUrls: ["./navigation.component.css"],
 })
 export class NavigationComponent implements OnInit {
+  title = "NotesApp";
   constructor(private authService: AuthService) {}
 
   ngOnInit() {

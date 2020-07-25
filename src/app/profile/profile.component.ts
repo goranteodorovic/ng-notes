@@ -6,10 +6,10 @@ import { User } from "../auth/user";
 
 @Component({
   selector: "app-dashboard",
-  templateUrl: "./dashboard.component.html",
-  styleUrls: ["./dashboard.component.css"],
+  templateUrl: "./profile.component.html",
+  styleUrls: ["./profile.component.css"],
 })
-export class DashboardComponent implements OnInit {
+export class ProfileComponent implements OnInit {
   editting: boolean = false;
   displayName: string = "";
   photoURL: string = "";
